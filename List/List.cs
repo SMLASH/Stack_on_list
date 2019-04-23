@@ -31,6 +31,10 @@ namespace list
         
         private void AddElement(Node root, T value)
                 {
+                    if (root.Equals(null))
+                    {
+                        return;
+                    }
                     if (root.Next.Equals(null))
                     {
                         root.Next = new Node(value);
