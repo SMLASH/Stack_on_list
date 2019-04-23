@@ -19,17 +19,19 @@ namespace list
             }
         }
         
-        public void AddElement(T value) => AddElement(_head, value);
+        public void AddElementToEnd(T value) => AddElementToEnd(_head, value);
         public bool FindValue(T value) => FindValue(_head, value);
         public void DeleteValue(T value) => DeleteValue(_head, value);
         public T GetValue() => GetValue(_head);
 
-        public List(T value)
+        private void AddElement(T value)
         {
-            
+            var NewNode = new Node(value);
+            NewNode.Next = _head;
+            _head = NewNode;
         }
         
-        private void AddElement(Node root, T value)
+        private void AddElementToEnd(Node root, T value)
                 {
                     if (root.Equals(null))
                     {
@@ -40,7 +42,7 @@ namespace list
                         root.Next = new Node(value);
                         return;
                     }
-                    AddElement(root.Next, value);
+                    AddElementToEnd(root.Next, value);
                 }
 
         private bool FindValue(Node first, T value)

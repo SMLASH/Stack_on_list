@@ -11,9 +11,9 @@ namespace TestProject1
         [Fact]
         public void AddElementTest()
         {
-            var ls = new List<int>();
-            ls.AddElement(3);
-            int expected = 3;
+            var ls = new List<int>(3);
+            ls.AddElementToEnd(4);
+            int expected = 4;
             if (ls.GetValue().Equals(expected))
             {
                 Console.WriteLine("AddElementTest: Pass");
