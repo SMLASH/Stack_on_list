@@ -6,6 +6,6 @@ namespace list
     {
         void AddElement(T value);
         bool FindValue(T value);
-        void DeleteValue(T value);            
+        void DeleteValue(T value);
     }
 }

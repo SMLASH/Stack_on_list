@@ -11,7 +11,17 @@ namespace TestProject1
         [Fact]
         public void AddElementTest()
         {
-            var ls = new 
+            var ls = new List<int>();
+            ls.AddElement(3);
+            int expected = 3;
+            if (ls.GetValue().Equals(expected))
+            {
+                Console.WriteLine("AddElementTest: Pass");
+            }
+            else
+            {
+                Console.WriteLine("AddElementTest: Failed");
+            }
         }
     }
 }
