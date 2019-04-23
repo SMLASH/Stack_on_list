@@ -29,9 +29,14 @@ namespace list
             
         }
         
-        private void AddElement(Node previous, T value)
+        private void AddElement(Node root, T value)
                 {
-                    previous.Next = new Node(value);
+                    if (root.Next.Equals(null))
+                    {
+                        root.Next = new Node(value);
+                        return;
+                    }
+                    AddElement(root.Next, value);
                 }
 
         private bool FindValue(Node first, T value)
