@@ -1,63 +1,69 @@
 using System;
-using System.Collections.Generic;
+
 //TODO: System.Collections.Generic;
 // where T : IComparable
 
-namespace list
+namespace List
 {
     public class List<T> : IList<T> where T : IComparable
     {
         private Node _head;
-        private class Node
-        {
-            public readonly T Value;
-            public Node Next;
-        
-            public Node(T value)
-            {
-                this.Value = value;
-            }
-        }
-        
-        public void AddElementToEnd(T value) => AddElementToEnd(_head, value);
-        public bool FindValue(T value) => FindValue(_head, value);
-        public void DeleteValue(T value) => DeleteValue(_head, value);
-        public T GetValue() => GetValue(_head);
 
-        private void AddElement(T value)
+        public bool Find(T value) => FindValue(_head, value);
+        public void Delete(T value) => DeleteValue(_head, value);
+
+        public T GetValue(int index)
         {
-            var NewNode = new Node(value);
-            NewNode.Next = _head;
-            _head = NewNode;
+            var currentNode = _head;
+            for (var i = 0; i < index; i++)
+            {
+                currentNode = currentNode.Next;
+            }
+
+            return currentNode.Value;
         }
         
+        
+//        public void AddToBegin(T value)
+//        {
+//            var newNode = new Node(value);
+//            newNode.Next = _head;
+//            _head = newNode;
+//        }
+
+        public void Add(T value)
+        {
+            if (_head == null)
+            {
+                _head = new Node(value);
+                return;
+            }
+            AddElementToEnd(_head, value);
+        }
+        
+        public void Add(T value, int index)
+        {
+            throw new NotImplementedException();
+        }
+
         private void AddElementToEnd(Node root, T value)
-                {
-                    if (root.Equals(null))
-                    {
-                        return;
-                    }
-                    if (root.Next.Equals(null))
-                    {
-                        root.Next = new Node(value);
-                        return;
-                    }
-                    AddElementToEnd(root.Next, value);
-                }
+        {
+            if (root.Next == null)
+            {
+                root.Next = new Node(value);
+                return;
+            }
+
+            AddElementToEnd(root.Next, value);
+        }
 
         private bool FindValue(Node first, T value)
         {
-            if (first.Value.Equals(value)) // first.Value == value)
-            {
-                return true;
-            }
-
-            if (first.Next == null)
+            if (first?.Next == null)
             {
                 return false;
             }
-
-            return FindValue(first.Next, value);
+            return first.Value.Equals(value) || FindValue(first.Next, value);
         }
 
         private void DeleteValue(Node root, T value)
@@ -77,14 +83,33 @@ namespace list
             }
         }
 
-        private T GetValue(Node root)
-        {
-            return root.Value;
-        }
-
         private Node GetNext(Node root)
         {
             return root.Next;
+        }
+        
+        private class Node
+        {
+            public readonly T Value;
+
+            public Node Next
+            {
+                get
+                {
+                    if (Next == null)
+                    {
+                        throw new IndexOutOfRangeException();
+                    }
+
+                    return Next;
+                }
+                
+                set => Next = value ?? throw new ArgumentNullException(nameof(value));
+            }
+            public Node(T value)
+            {
+                this.Value = value;
+            }
         }
     }
 }

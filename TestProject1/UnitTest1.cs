@@ -1,27 +1,30 @@
 using System;
+using List;
 using Xunit;
-
-using list;
+using Xunit.Abstractions;
 
 namespace TestProject1
 {
     public class UnitTest1
     {
-        
         [Fact]
         public void AddElementTest()
         {
-            var ls = new List<int>(3);
-            ls.AddElementToEnd(4);
-            int expected = 4;
-            if (ls.GetValue().Equals(expected))
-            {
-                Console.WriteLine("AddElementTest: Pass");
-            }
-            else
-            {
-                Console.WriteLine("AddElementTest: Failed");
-            }
+            var ls = new List<int>();
+            ls.Add(4);
+            const int expected = 4;
+            var actual = ls.GetValue(0);
+            
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void FindValueTest()
+        {
+            var ls = new List<int>();
+            const int value = 4;
+            ls.Add(value);
+            
+            Assert.True(ls.Find(value));
         }
     }
 }

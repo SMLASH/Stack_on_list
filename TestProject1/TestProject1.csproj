@@ -14,7 +14,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\List\List.csproj" />
-      <ProjectReference Include="..\stack_on_list_2\stack_on_list_2.csproj" />
+      <ProjectReference Include="..\StackOnList\StackOnList.csproj" />
     </ItemGroup>
 
 </Project>

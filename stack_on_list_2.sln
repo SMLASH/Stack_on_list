@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stack_on_list_2", "stack_on_list_2\stack_on_list_2.csproj", "{DB0885FD-8046-471A-B756-BED2C6DA5BB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOnList", "StackOnList\StackOnList.csproj", "{DB0885FD-8046-471A-B756-BED2C6DA5BB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "List", "List\List.csproj", "{02CD627E-05C8-49F8-BDFE-F15D201C525D}"
 EndProject
